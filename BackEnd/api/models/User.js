@@ -5,7 +5,7 @@
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
-//var Passwords = require('machinepack-passwords');
+var Passwords = require('machinepack-passwords');
 
 module.exports = {
   connection: 'localDiskDb',
@@ -26,19 +26,19 @@ module.exports = {
       unique: true,
       required: true
     }
-  }/*,
+  },
   beforeCreate: function (user, cb) {
     Passwords.encryptPassword({
-      pass: user.password
+      password: user.password
     }).exec({
         error: function (err) {
           cb('Error de enciptacion', err);
         },
         success: function (hashedPassword) {
-          user.pass = hashedPassword;
+          user.password = hashedPassword;
           cb();
         }
       });
-  }*/
+  }
 };
 
