@@ -8,22 +8,32 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-
+  users: UserClass[];
   constructor(private _userService: UserService) { }
 
   ngOnInit() {
+    this._userService.getUsers()
+      .subscribe(
+        (users: UserClass[]) => {
+          this.users = users.map((user: UserClass) => {
+            return user;
+          });
+        },
+        (error) => {
+          console.log('Error: ', error);
+        }
+      );
   }
 
   addUser(username: string, email: string, password: string) {
-    console.log(username, email, password);
     const newUser: UserClass = new UserClass(username, email, password);
     this._userService.create(newUser)
       .subscribe(
         (createdUser: UserClass) => {
-          console.log('Usuario creado', createdUser);
+          this.users.push(createdUser);
         },
         (error) => {
-          console.log('Error en el sign in: ', error, 'usuario', newUser);
+          console.log('Error en el sign in: ', error);
         });
     return false;
   }

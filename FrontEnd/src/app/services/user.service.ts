@@ -7,12 +7,9 @@ import { UserClass } from '../classes/UserClass';
 @Injectable()
 export class UserService {
   url: string;
-  model: 'User';
+  model = 'User';
   constructor(private _http: Http, private _masterUrlService: MasterUrlService) {
-    console.log('la url del servicio es:', this._masterUrlService.url);
-    console.log('el modelo en el user es:', this.model);
     this.url = this._masterUrlService.url + this.model;
-    console.log('en el constructor la url es:', this.url);
   }
   create(user: UserClass) {
     const data = {
@@ -20,7 +17,21 @@ export class UserService {
       email: user.email,
       password: user.password
     };
-    console.log('la url es', this.url);
-    return this._http.post('http://localhost:1337/User', data).map(res => res.json());
+    return this._http.post(this.url, data).map(res => res.json());
+  }
+  delete(user: UserClass) {
+    return this._http.delete(this.url + '/' + user.id).map(res => res.json());
+  }
+  update(user: UserClass) {
+    const data = {
+      username: user.username
+    };
+    return this._http.post(this.url + '/' + user.id, data).map(res => res.json());
+  }
+  getUsers() {
+    return this._http.get(this.url).map(res => res.json());
+  }
+  getUserById(id: number) {
+    return this._http.get(this.url + '?id=' + id).map(res => res.json());
   }
 }
