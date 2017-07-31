@@ -1,6 +1,9 @@
 <h1>Books</h1>
-<div *ngFor="let book of books">
-  <p>{{book.title}}</p>
-  <p>{{book.author}}</p>
-  <p>{{book.genres[0]}}</p>
+<div *ngFor="let book of books; let i = index">
+  <p><b>#Book: </b>{{i + 1}}</p>
+  <p><b>ISBN: </b>{{book.isbn}}</p>
+  <p><b>Title: </b>{{book.title}}</p>
+  <p><b>Author: </b>{{book.author.penName}}</p>
+  <p><b>Generos: </b>{{book.genres[0].name}}</p>
+  <p><b>Publication date: </b>{{book.publicationDate}}</p>
 </div>
