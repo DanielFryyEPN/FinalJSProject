@@ -9,6 +9,7 @@ import { RoutesModule } from './routes';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { MasterUrlService } from './services/master-url.service';
 import { UserService } from './services/user.service';
+import { BookService } from './services/book.service';
 import { HttpModule } from '@angular/http';
 
 @NgModule({
@@ -27,6 +28,7 @@ import { HttpModule } from '@angular/http';
   providers: [
     MasterUrlService,
     UserService,
+    BookService
   ],
   bootstrap: [AppComponent]
 })
