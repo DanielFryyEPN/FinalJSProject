@@ -4,6 +4,9 @@
   <p><b>ISBN: </b>{{book.isbn}}</p>
   <p><b>Title: </b>{{book.title}}</p>
   <p><b>Author: </b>{{book.author.penName}}</p>
-  <p><b>Generos: </b>{{book.genres[0].name}}</p>
+  <p><b>Genres: </b></p>
+  <div *ngFor="let genre of genres">
+    <p>{{genre.name}}</p>
+  </div>
   <p><b>Publication date: </b>{{book.publicationDate}}</p>
 </div>

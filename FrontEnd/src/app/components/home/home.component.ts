@@ -9,6 +9,7 @@ import { BookService } from '../../services/book.service';
 })
 export class HomeComponent implements OnInit {
   books: BookClass[];
+  genres: number[];
   constructor(private _bookService: BookService) { }
 
   ngOnInit() {
@@ -16,6 +17,9 @@ export class HomeComponent implements OnInit {
       .subscribe(
         (books: BookClass[]) => {
           this.books = books.map((book: BookClass) => {
+            this.genres = book.genres.map((genre: number) => {
+              return genre;
+            });
             return book;
           });
         },
