@@ -11,6 +11,8 @@ import { MasterUrlService } from './services/master-url.service';
 import { UserService } from './services/user.service';
 import { BookService } from './services/book.service';
 import { HttpModule } from '@angular/http';
+import { BooksComponent } from './components/books/books.component';
+import { AuthorsComponent } from './components/authors/authors.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { HttpModule } from '@angular/http';
     HomeComponent,
     NavbarComponent,
     LoginComponent,
-    SignInComponent
+    SignInComponent,
+    BooksComponent,
+    AuthorsComponent
   ],
   imports: [
     BrowserModule,
