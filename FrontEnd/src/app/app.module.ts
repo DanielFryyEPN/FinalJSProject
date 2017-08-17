@@ -13,6 +13,7 @@ import { BookService } from './services/book.service';
 import { HttpModule } from '@angular/http';
 import { BooksComponent } from './components/books/books.component';
 import { AuthorsComponent } from './components/authors/authors.component';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AuthorsComponent } from './components/authors/authors.component';
     LoginComponent,
     SignInComponent,
     BooksComponent,
-    AuthorsComponent
+    AuthorsComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,

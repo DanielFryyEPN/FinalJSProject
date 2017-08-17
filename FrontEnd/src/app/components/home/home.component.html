@@ -4,17 +4,10 @@
   <p><b>ISBN: </b>{{book.isbn}}</p>
   <p><b>Title: </b>{{book.title}}</p>
   <p><b>Author: </b>{{book.author.penName}}</p>
-  <p><b>Genres: </b></p>
-  <div *ngFor="let genre of book.genres">
-    <p>{{genre.name}}</p>
-  </div>
-  <!--<p><b>Genres: </b>{{book.genres[0].name}}</p>-->
+  <p><b>Genres: </b>
+    <span *ngFor="let genre of book.genres">
+      {{genre.name}}<span *ngIf="book.genres.length > 1">,</span>
+    </span>
+  </p>
   <p><b>Publication date: </b>{{book.publicationDate}}</p>
 </div>
-
-<p><b>#Book: </b>ultimo</p>
-<p><b>ISBN: </b>{{books[7].isbn}}</p>
-<p><b>Title: </b>{{books[7].title}}</p>
-<p><b>Author: </b>{{books[7].author.penName}}</p>
-<p><b>Genres: </b>{{books[7].genres[0].name}}, {{books[7].genres[1].name}}</p>
-<p><b>Publication date: </b>{{books[7].publicationDate}}</p>

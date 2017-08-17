@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserClass } from '../../classes/UserClass';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -9,7 +10,7 @@ import { UserService } from '../../services/user.service';
 })
 export class SignInComponent implements OnInit {
   users: UserClass[];
-  constructor(private _userService: UserService) { }
+  constructor(private _userService: UserService, private _router: Router) { }
 
   ngOnInit() {
     this._userService.getUsers()
@@ -30,7 +31,9 @@ export class SignInComponent implements OnInit {
     this._userService.create(newUser)
       .subscribe(
         (createdUser: UserClass) => {
+          console.log('Created user');
           this.users.push(createdUser);
+          this._router.navigateByUrl('confirmation');
         },
         (error) => {
           console.log('Error en el sign in: ', error);
