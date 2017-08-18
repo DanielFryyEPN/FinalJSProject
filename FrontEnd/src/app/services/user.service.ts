@@ -12,12 +12,13 @@ export class UserService {
     this.url = this._masterUrlService.url + this.model;
   }
   create(user: UserClass) {
+    const method = '/create';
     const data = {
       username: user.username,
       email: user.email,
       password: user.password
     };
-    return this._http.post(this.url, data).map(res => res.json());
+    return this._http.post(this.url + method, data);
   }
   delete(user: UserClass) {
     return this._http.delete(this.url + '/' + user.id).map(res => res.json());

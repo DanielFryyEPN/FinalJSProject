@@ -2,7 +2,7 @@
   <div class="col-md-3"></div>
   <div class="col-md-6">
     <div class="jumbotron">
-      <form (submit)="logIn(email.value, password.value)">
+      <form (submit)="login(email.value, password.value)">
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" #email>
@@ -12,7 +12,7 @@
           <label for="exampleInputPassword1">Password</label>
           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" #password>
         </div>
-        <button class="btn btn-primary">LogIn</button>
+        <button class="btn btn-primary">Login</button>
       </form>
     </div>
   </div>

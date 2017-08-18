@@ -14,6 +14,7 @@ import { HttpModule } from '@angular/http';
 import { BooksComponent } from './components/books/books.component';
 import { AuthorsComponent } from './components/authors/authors.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
   providers: [
     MasterUrlService,
     UserService,
-    BookService
+    BookService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
