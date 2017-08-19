@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -15,6 +16,7 @@ import { BooksComponent } from './components/books/books.component';
 import { AuthorsComponent } from './components/authors/authors.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { AuthService } from './services/auth.service';
+import { TokenService } from './services/token.service';
 
 @NgModule({
   declarations: [
@@ -30,13 +32,16 @@ import { AuthService } from './services/auth.service';
   imports: [
     BrowserModule,
     HttpModule,
-    RoutesModule
+    RoutesModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     MasterUrlService,
     UserService,
     BookService,
-    AuthService
+    AuthService,
+    TokenService
   ],
   bootstrap: [AppComponent]
 })
