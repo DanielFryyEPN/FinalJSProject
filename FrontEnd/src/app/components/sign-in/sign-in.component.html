@@ -1,12 +1,51 @@
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="jumbotron">
+      <form (submit)="addUser(datas)" #datas ="ngForm" novalidate>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Username</label>
+          <input class="form-control" placeholder="Enter username" #username>
+          <small class="form-text text-muted">This will be your username.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" #email="ngModel"
+                 [(ngModel)]="user.email" required pattern="^([\\w-\\.]+)@((?:[\\w]+\\.)+)([a-zA-Z]{2,4})$" name="email" #emailTAG>
+          <div *ngIf="email.errors?.pattern" class="alert alert-warning animated bounceIn" role="alert">
+            <span>Wrong email.</span>
+          </div>
+          <pre>
+            Error: {{email.errors | json}}
+          </pre>
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" #password>
+        </div>
+        <button class="btn btn-primary" [disabled]="!email.valid">Create an account</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-3"></div>
+</div>
 
-      <form (ngsubmit)="addUser(data)" #data  = "ngForm" novalidate>
+<!--
+<body>
+      <form (ngSubmit)="addUser(data)" #data  = "ngForm" novalidate>
 
         <div class="form-group">
           <label for="exampleInputName">Username</label>
-          <input class="form-control" id="exampleInputName" placeholder="Enter username" [(ngModel)]="user.username" #username="ngModel"
-                 #usernameTAG type="text" name="username">
-          <small class="form-text text-muted">This will be your username.</small>
+          <input class="form-control" id="exampleInputName"
+                 placeholder="Enter username"
+                 [(ngModel)]="user.username"
+                 #username="ngModel"
+                 #usernameTAG type="text"
+                 name="username">
         </div>
+        <small class="form-text text-muted">This will be your username.</small>
+
 
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
@@ -32,12 +71,16 @@
         <div class="form-group">
           <label for="exampleInputPassword1">Password</label>
           <input type="password" class="form-control"
-                 id="exampleInputPassword1" placeholder="Password"
+                 id="exampleInputPassword1"
+                 placeholder="Password"
                  #password="ngModel"
                  #passwordTAG
                  [(ngModel)]="user.password"
-                 type="password" name="password">
+                 type="password"
+                 name="password">
         </div>
 
         <button class="btn btn-primary" [disabled]="!data.valid">Create an account</button>
       </form>
+     </body>
+-->

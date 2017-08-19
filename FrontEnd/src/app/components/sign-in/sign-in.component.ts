@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserClass } from '../../classes/UserClass';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import {NgForm} from "@angular/forms";
 
 
 @Component({
@@ -18,8 +19,8 @@ export class SignInComponent implements OnInit {
   ngOnInit() {
   }
 
-  addUser(username: string, email: string, password: string) {
-    const newUser: UserClass = new UserClass(username, email, password);
+  addUser(a:NgForm) {
+    const newUser: UserClass = new UserClass(a.value.username, a.value.email,a.value.password);
     this._userService.create(newUser)
       .subscribe(
         res => {

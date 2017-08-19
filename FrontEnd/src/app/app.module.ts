@@ -15,6 +15,7 @@ import { BooksComponent } from './components/books/books.component';
 import { AuthorsComponent } from './components/authors/authors.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { AuthService } from './services/auth.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AuthService } from './services/auth.service';
   imports: [
     BrowserModule,
     HttpModule,
-    RoutesModule
+    RoutesModule,
+    FormsModule
   ],
   providers: [
     MasterUrlService,
