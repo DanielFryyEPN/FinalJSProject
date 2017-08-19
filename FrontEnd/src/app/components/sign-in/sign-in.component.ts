@@ -24,7 +24,7 @@ export class SignInComponent implements OnInit {
               private _formBuilder: FormBuilder) {
     this.reactiveForm = _formBuilder.group({
       'username': [null, Validators.required],
-      'email': [null, Validators.required],
+      'email': [null, Validators.compose([Validators.required, Validators.pattern(/([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/)])],
       'password': [null, Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(18)])]
     });
   }

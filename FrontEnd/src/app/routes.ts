@@ -7,6 +7,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { BooksComponent } from './components/books/books.component';
 import { AuthorsComponent } from './components/authors/authors.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { AddBookComponent } from './components/add-book/add-book.component';
+import {IsLoggedService} from "./services/is-logged.service";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -14,7 +16,8 @@ const appRoutes: Routes = [
   {path: 'signIn', component: SignInComponent},
   {path: 'books', component: BooksComponent},
   {path: 'authors', component: AuthorsComponent},
-  {path: 'confirmation', component: ConfirmationComponent}
+  {path: 'confirmation', component: ConfirmationComponent},
+  {path: 'addBook', component: AddBookComponent, canActivate: [IsLoggedService]}
 ];
 
 export const RoutesModule: ModuleWithProviders = RouterModule.forRoot(appRoutes);

@@ -21,12 +21,12 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    /*const method = '/login';
+    const method = '/login';
     const data = {
       email,
       password
     };
-    this._http.post(this.url + method, data)
+    /*this._http.post(this.url + method, data)
       .subscribe(
         res => {
           this._tokenService.token = res.text();

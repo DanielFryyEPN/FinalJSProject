@@ -1,3 +1,22 @@
-<p>
-  books works!
-</p>
+<h1 align="center">Books</h1>
+<div class="row">
+  <div *ngFor="let book of books; let i = index">
+    <div class="col-sm-4">
+      <div class="card" style="width: 20rem;">
+        <div class="card-block">
+          <p><b>#Book: </b>{{i + 1}}</p>
+          <p><b>ISBN: </b>{{book.isbn}}</p>
+          <p><b>Title: </b>{{book.title}}</p>
+          <p><b>Author: </b>{{book.author.penName}}</p>
+          <p><b>Genres: </b>
+            <span *ngFor="let genre of book.genres">
+              {{genre.name}}<span *ngIf="book.genres.length > 1">,</span>
+            </span>
+          </p>
+          <p><b>Publication date: </b>{{book.publicationDate}}</p>
+          <button class="btn btn-danger" (click)="deleteBook(book)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

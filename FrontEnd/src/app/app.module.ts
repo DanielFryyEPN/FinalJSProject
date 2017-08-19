@@ -17,6 +17,10 @@ import { AuthorsComponent } from './components/authors/authors.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { AuthService } from './services/auth.service';
 import { TokenService } from './services/token.service';
+import { AddBookComponent } from './components/add-book/add-book.component';
+import { GenreService } from './services/genre.service';
+import { AuthorService } from './services/author.service';
+import { IsLoggedService } from './services/is-logged.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,8 @@ import { TokenService } from './services/token.service';
     SignInComponent,
     BooksComponent,
     AuthorsComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    AddBookComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,10 @@ import { TokenService } from './services/token.service';
     UserService,
     BookService,
     AuthService,
-    TokenService
+    TokenService,
+    GenreService,
+    AuthorService,
+    IsLoggedService
   ],
   bootstrap: [AppComponent]
 })
