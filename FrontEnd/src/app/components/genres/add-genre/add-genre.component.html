@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="jumbotron">
+      <h1 align="center">Add Genre</h1>
+      <br>
+      <form [formGroup]="reactiveForm" (submit)="addGenre(reactiveForm.value)">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input id="name" class="form-control" placeholder="Enter genre" formControlName="name">
+          <div *ngIf="!reactiveForm.controls['name'].valid && reactiveForm.controls['name'].touched"
+               class="alert alert-warning" role="alert">
+            <strong>Warning! </strong>{{titleAlert}}
+          </div>
+        </div>
+        <button class="btn btn-primary" [disabled]="!reactiveForm.valid">Add Genre</button>
+        <button type="button" class="btn btn-secondary" routerLink="/genres">Cancel</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+
+<!--<div class="form-group has-warning">
+  <label class="form-control-label" for="inputWarning1">Input with warning</label>
+  <input class="form-control form-control-warning" id="inputWarning1" type="text">
+  <div class="form-control-feedback">Shucks, try again.</div>
+</div>-->
