@@ -1,4 +1,3 @@
-declare let module;
 declare let Genre;
 module.exports = {
   create: (req, res) => {
