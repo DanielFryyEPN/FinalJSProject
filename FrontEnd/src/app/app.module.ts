@@ -33,6 +33,7 @@ import { GenresComponent } from './components/genres/genres.component';
 import { AddGenreComponent } from './components/genres/add-genre/add-genre.component';
 import { EditGenreComponent } from './components/genres/edit-genre/edit-genre.component';
 import { ManageGenresComponent } from './components/genres/manage-genres/manage-genres.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { ManageGenresComponent } from './components/genres/manage-genres/manage-
     GenresComponent,
     AddGenreComponent,
     EditGenreComponent,
-    ManageGenresComponent
+    ManageGenresComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
