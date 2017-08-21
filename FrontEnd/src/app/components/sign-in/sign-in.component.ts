@@ -37,7 +37,7 @@ export class SignInComponent implements OnInit {
     this.email = post.email;
     this.password = post.password;
     const newUser: UserClass = new UserClass(this.username, this.email, this.password);
-    this._userService.create(newUser)
+    this._userService.createUser(newUser)
       .subscribe(
         res => {
           console.log('Response', res.text());

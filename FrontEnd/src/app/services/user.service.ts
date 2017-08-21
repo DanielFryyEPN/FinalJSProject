@@ -11,7 +11,7 @@ export class UserService {
   constructor(private _http: Http, private _masterUrlService: MasterUrlService) {
     this.url = this._masterUrlService.url + this.model;
   }
-  create(user: UserClass) {
+  createUser(user: UserClass) {
     const method = '/create';
     const data = {
       username: user.username,
@@ -20,14 +20,14 @@ export class UserService {
     };
     return this._http.post(this.url + method, data);
   }
-  delete(user: UserClass) {
+  deleteUser(user: UserClass) {
     return this._http.delete(this.url + '/' + user.id).map(res => res.json());
   }
-  update(user: UserClass) {
+  updateUser(user: UserClass) {
     const data = {
       username: user.username
     };
-    return this._http.post(this.url + '/' + user.id, data).map(res => res.json());
+    return this._http.put(this.url + '/' + user.id, data).map(res => res.json());
   }
   getUsers() {
     return this._http.get(this.url).map(res => res.json());

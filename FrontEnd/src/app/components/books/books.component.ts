@@ -30,19 +30,4 @@ export class BooksComponent implements OnInit {
         }
       );
   }
-
-  deleteBook(book: BookClass) {
-    const index = this.books.indexOf(book);
-    this._bookService.delete(book)
-      .subscribe(
-        res => {
-          this.books.splice(index, 1);
-          console.log('Response:', res);
-        },
-        err => {
-          console.log('Error', err);
-        }
-      );
-    return false;
-  }
 }

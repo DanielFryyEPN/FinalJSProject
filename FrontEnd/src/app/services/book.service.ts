@@ -6,12 +6,15 @@ import { BookClass } from '../classes/BookClass';
 
 @Injectable()
 export class BookService {
+
   url: string;
   model = 'Book';
+
   constructor(private _http: Http, private _masterUrlService: MasterUrlService) {
     this.url = this._masterUrlService.url + this.model;
   }
-  create(book: BookClass) {
+
+  createBook(book: BookClass) {
     const data = {
       isbn: book.isbn,
       title: book.title,
@@ -21,18 +24,22 @@ export class BookService {
     };
     return this._http.post(this.url, data).map(res => res.json());
   }
-  delete(book: BookClass) {
+
+  deleteBook(book: BookClass) {
     return this._http.delete(this.url + '/' + book.isbn).map(res => res.json());
   }
-  update(book: BookClass) {
+
+  updateBook(book: BookClass) {
     const data = {
       title: book.title
     };
     return this._http.post(this.url + '/' + book.isbn, data).map(res => res.json());
   }
+
   getBooks() {
     return this._http.get(this.url).map(res => res.json());
   }
+
   getBookByIsbn(isbn: string) {
     return this._http.get(this.url + '?isbn=' + isbn).map(res => res.json());
   }
