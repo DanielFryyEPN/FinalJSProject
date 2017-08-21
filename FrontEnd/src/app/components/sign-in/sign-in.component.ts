@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserClass } from '../../classes/UserClass';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-in',
@@ -8,32 +10,41 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  users: UserClass[];
-  constructor(private _userService: UserService) { }
 
-  ngOnInit() {
-    this._userService.getUsers()
-      .subscribe(
-        (users: UserClass[]) => {
-          this.users = users.map((user: UserClass) => {
-            return user;
-          });
-        },
-        (error) => {
-          console.log('Error: ', error);
-        }
-      );
+  reactiveForm: FormGroup;
+  username = '';
+  email = '';
+  password = '';
+  titleAlert = 'This field is required';
+
+  user: UserClass = new UserClass('');
+
+  constructor(private _userService: UserService,
+              private _router: Router,
+              private _formBuilder: FormBuilder) {
+    this.reactiveForm = _formBuilder.group({
+      'username': [null, Validators.required],
+      'email': [null, Validators.compose([Validators.required, Validators.pattern(/([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/)])],
+      'password': [null, Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(18)])]
+    });
   }
 
-  addUser(username: string, email: string, password: string) {
-    const newUser: UserClass = new UserClass(username, email, password);
-    this._userService.create(newUser)
+  ngOnInit() {
+  }
+
+  addUser(post) {
+    this.username = post.username;
+    this.email = post.email;
+    this.password = post.password;
+    const newUser: UserClass = new UserClass(this.username, this.email, this.password);
+    this._userService.createUser(newUser)
       .subscribe(
-        (createdUser: UserClass) => {
-          this.users.push(createdUser);
+        res => {
+          console.log('Response', res.text());
+          this._router.navigateByUrl('confirmation');
         },
-        (error) => {
-          console.log('Error en el sign in: ', error);
+        err => {
+          console.log('Error en el sign in: ', err.text());
         });
     return false;
   }

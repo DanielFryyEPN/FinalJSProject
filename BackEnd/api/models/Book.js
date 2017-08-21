@@ -14,7 +14,8 @@ module.exports = {
     isbn: {
       type: 'string',
       primaryKey: true,
-      unique: true
+      unique: true,
+      required: true
     },
     title: {
       type: 'string',

@@ -1,0 +1,23 @@
+<h1 class="display-3" align="center">Books</h1>
+<div class="row">
+  <div *ngFor="let book of books" class="col-md-4">
+    <div class="bs-component">
+      <div class="card">
+        <h3 class="card-header">{{book.title}}</h3>
+        <div class="card-block">
+          <h5 class="card-title">{{book.author.name}} {{book.author.lastName}} ({{book.author.penName}})</h5>
+          <h6 class="card-subtitle text-muted">{{book.isbn}}</h6>
+        </div>
+        <img style="height: 200px; width: 100%; display: block;" src="../../../assets/img/showcase.jpg" alt="Card image">
+        <div class="card-block">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+        <div class="card-footer text-muted text-xs-center">
+          {{book.publicationDate}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="jumbotron">
+      <h1 align="center">Edit Genre</h1>
+      <br>
+      <form [formGroup]="reactiveForm" (submit)="editGenre(reactiveForm.value)">
+        <div hidden class="form-group">
+          <label for="id">ID</label>
+          <input id="id" class="form-control" formControlName="id" [(ngModel)]="genre.id" value="{{genre.id}}">
+        </div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input id="name" class="form-control" placeholder="Enter genre" formControlName="name" [(ngModel)]="genre.name" value="{{genre.name}}">
+          <div *ngIf="reactiveForm.controls['name'].invalid && reactiveForm.controls['name'].touched"
+               class="alert alert-warning" role="alert">
+            <strong>Warning! </strong>{{titleAlert}}
+          </div>
+        </div>
+        <button class="btn btn-primary" [disabled]="reactiveForm.invalid">Edit Genre</button>
+        <button type="button" class="btn btn-secondary" routerLink="/manageGenres">Cancel</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>

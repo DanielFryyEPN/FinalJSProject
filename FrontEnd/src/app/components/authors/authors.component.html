@@ -1,0 +1,18 @@
+<h1 class="display-3" align="center">Authors</h1>
+<div class="row">
+  <div *ngFor="let author of authors">
+    <div class="col-sm-4">
+      <div class="card" style="width: 20rem;">
+        <div class="card-block">
+          <p><b>Name: </b>{{author.name}} {{author.lastName}}</p>
+          <p><b>Pen Name: </b>{{author.penName}}</p>
+          <p><b>Books: </b>
+            <span *ngFor="let book of author.books">
+              {{book.title}}<span *ngIf="author.books.length > 1">,</span>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
